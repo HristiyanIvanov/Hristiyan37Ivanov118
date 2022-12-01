@@ -16,9 +16,9 @@ def sum_list(lst):
     return sum
 
 def max_of_two(a, b):
-    if type(a)==int or type(a)==float:
-        if type(b)==int or type(b)==float:
+    if type(a) == int or type(a) == float:
+        if type(b) == int or type(b) == float:
             return a if a >= b else b
         return a
-    if type(b)==int or type(b)==float: return b
+    if type(b) == int or type(b) == float: return b
     return
