@@ -114,7 +114,15 @@ class Human(JungleAnimal):
             if animals[i] == self:
                 if i != 0 and i != len(animals) - 1:
                     if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
-                        type1 = input(f"Enter type: ")
+                        type1 = input("Enter type: ")
+                        buildings.append(Building(type1))
+                if i == 0:
+                    if type(animals[i + 1]) == Human:
+                        type1 = input("Enter type:")
+                        buildings.append(Building(type1))
+                if len(animals) - 1:
+                    if type(animals[i - -1]) == Human:
+                        type1 = input("Enter type:")
                         buildings.append(Building(type1))
 
 
@@ -165,21 +173,15 @@ sounds = [
 
 for i in range(102):
     rn = r.randint(0, 9)
+    agep = r.randint(7, 20)
+    name = r.randint(0, len(names) - 1)
+    sound = r.randint(0, len(sounds) - 1)
     try:
         if rn >= 0 and rn <= 3:
-            agep = r.randint(0, 20)
-            name = r.randint(0, len(names) - 1)
-            sound = r.randint(0, len(sounds) - 1)
             animals.append(Lemur(names[name], agep, sounds[sound]))
         elif rn > 3 and rn <= 7:
-            agep = r.randint(0, 20)
-            name = r.randint(0, len(names) - 1)
-            sound = r.randint(0, len(sounds) - 1)
             animals.append(Jaguar(names[name], agep, sounds[sound]))
         elif rn > 7 and rn <= 9:
-            agep = r.randint(0, 20)
-            name = r.randint(0, len(names) - 1)
-            sound = r.randint(0, len(sounds) - 1)
             animals.append(Human(names[name], agep, sounds[sound]))
     except InvalidAgeError:
         print(f"{names[name]} {agep} {sounds[sound]} {InvalidAgeError()}")
