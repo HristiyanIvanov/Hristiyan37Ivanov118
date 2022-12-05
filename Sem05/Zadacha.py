@@ -56,7 +56,7 @@ class JungleAnimal:
 class Jaguar(JungleAnimal):
     def __init__(self, name, age, sound):
         super().__init__(name, age, sound)
-        if age >= 15:
+        if self.age >= 15:
             raise InvalidAgeError()
         if self.sound.count("r") < 2:
             raise InvalidSoundError()
@@ -111,21 +111,23 @@ class Human(JungleAnimal):
 
     def daily_task(self, animals, buildings):
         for i in range(len(animals)):
-            if animals[0] == self:
-                if animals[i] == self:
-                    if i != 0 and i != len(animals) - 1:
-                        if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
-                            buildings.append(Building())
+            if animals[i] == self:
+                if i != 0 and i != len(animals) - 1:
+                    if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
+                        typeB = "Cabin"
+                        buildings.append(Building(typeB))
                     if i == 0:
                         if type(animals[i + 1]) == Human:
-                            buildings.append(Building())
-                    if len(animals) - 1:
-                        if type(animals[i - -1]) == Human:
-                            buildings.append(Building())
+                            typeB = "Hut"
+                            buildings.append(Building(typeB))
+                    if i == len(animals) - 1:
+                        if type(animals[i - 1]) == Human:
+                            typeB = "House"
+                            buildings.append(Building(typeB))
 
 
 class Building():
-    def __init__(self, typeB="House"):
+    def __init__(self, typeB):
         self.typeB = typeB
 
 
