@@ -111,27 +111,22 @@ class Human(JungleAnimal):
 
     def daily_task(self, animals, buildings):
         for i in range(len(animals)):
-            if animals[i] == self:
-                if i != 0 and i != len(animals) - 1:
-                    if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
-                        type1 = input("Enter type: ")
-                        buildings.append(Building(type1))
-                if i == 0:
-                    if type(animals[i + 1]) == Human:
-                        type1 = input("Enter type:")
-                        buildings.append(Building(type1))
-                if len(animals) - 1:
-                    if type(animals[i - -1]) == Human:
-                        type1 = input("Enter type:")
-                        buildings.append(Building(type1))
+            if animals[0] == self:
+                if animals[i] == self:
+                    if i != 0 and i != len(animals) - 1:
+                        if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
+                            buildings.append(Building())
+                    if i == 0:
+                        if type(animals[i + 1]) == Human:
+                            buildings.append(Building())
+                    if len(animals) - 1:
+                        if type(animals[i - -1]) == Human:
+                            buildings.append(Building())
 
 
 class Building():
-    def __init__(self, type1):
-        self.type1 = type1
-
-    def print(self):
-        print(self.type1)
+    def __init__(self, typeB="House"):
+        self.typeB = typeB
 
 
 fruits = 100
