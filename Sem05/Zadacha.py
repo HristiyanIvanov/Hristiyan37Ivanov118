@@ -116,14 +116,14 @@ class Human(JungleAnimal):
                     if type(animals[i + 1]) == Human or type(animals[i - 1]) == Human:
                         typeB = "Cabin"
                         buildings.append(Building(typeB))
-                    if i == 0:
-                        if type(animals[i + 1]) == Human:
-                            typeB = "Hut"
-                            buildings.append(Building(typeB))
-                    if i == len(animals) - 1:
-                        if type(animals[i - 1]) == Human:
-                            typeB = "House"
-                            buildings.append(Building(typeB))
+                if i == 0:
+                    if type(animals[i + 1]) == Human:
+                        typeB = "Hut"
+                        buildings.append(Building(typeB))
+                if i == len(animals) - 1:
+                    if type(animals[i - 1]) == Human:
+                        typeB = "House"
+                        buildings.append(Building(typeB))
 
 
 class Building():
