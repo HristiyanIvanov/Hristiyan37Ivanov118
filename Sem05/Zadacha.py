@@ -129,7 +129,9 @@ class Human(JungleAnimal):
 class Building():
     def __init__(self, typeB):
         self.typeB = typeB
-
+        
+    def print(self):
+        print(self.typeB)
 
 fruits = 100
 animals = []
