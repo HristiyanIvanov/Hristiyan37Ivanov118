@@ -12,7 +12,7 @@ class Bank:
 
     def register_user(self):
         print("\nOption 1: Register user selected")
-        username = input("Enter a username: ").title()
+        username = input("Enter a first and last name: ").title()
         try:
             first_name, last_name = username.split(" ")
         except:
@@ -67,7 +67,16 @@ class Bank:
         username = input("Enter your username: ")
         egn = input("Enter your EGN: ")
         iban = input("Enter the IBAN of the account you want to deposit to: ")
-        amount = int(input("Enter the amount you want to deposit: "))
+        while True:
+            amount = int(input("Enter the amount you want to deposit: "))
+            try:
+                if amount <= 20:
+                    print(f"Sorry, the amount of the deposit must be higher than 20{self.accounts.get_currency(username, egn, iban)}.")
+                    continue
+                break
+            except ValueError:
+                print("Invalid Amount Type. Please type integer number.")
+
         self.accounts.deposit_to_account(username, egn, iban, amount)
         print(
             f"{amount} {self.accounts.get_currency(username, egn, iban)} deposited successfully to account with IBAN {iban}!")
@@ -77,7 +86,15 @@ class Bank:
         username = input("Enter your username: ")
         egn = input("Enter your EGN: ")
         iban = input("Enter the IBAN of the account you want to withdraw from: ")
-        amount = int(input("Enter the amount you want to withdraw: "))
+        while True:
+            amount = int(input("Enter the amount you want to deposit: "))
+            try:
+                if amount <= 10:
+                    print(f"Sorry, you can't withdraw less then 10 {self.accounts.get_currency(username, egn, iban)}.")
+                    continue
+                break
+            except ValueError:
+                print("Invalid Amount Type. Please type integer number.")
         self.accounts.withdraw_from_account(username, egn, iban, amount)
         print(
             f"{amount} {self.accounts.get_currency(username, egn, iban)} withdrawn successfully from account with IBAN {iban}!")
