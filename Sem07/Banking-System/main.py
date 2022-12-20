@@ -67,6 +67,8 @@ def main():
             print(e)
         except InvalidCurrencyInput as e:
             print(e)
+        except ValueError:
+            print("Invalid Amount Type. Please type integer number.")
 
 
 if __name__ == "__main__":
