@@ -8,18 +8,24 @@ class Accounts:
     def get_user(self, username, egn):
         user = self.users.find_user(username, egn)
         # for user in self.users:
-        if user["username"] == username:
-            if egn and user["egn"] == egn:
-                return user
-            elif not egn:
-                return user
-        return None
+        try:
+            if user["username"] == username:
+                if egn and user["egn"] == egn:
+                    return user
+                elif not egn:
+                    return user
+            return None
+        except:
+            raise InvalidUserData()
 
     def get_account(self, user, iban):
-        for account in user["accounts"]:
-            if account["iban"] == iban:
-                return account
-        return None
+        try:
+            for account in user["accounts"]:
+                if account["iban"] == iban:
+                    return account
+            return None
+        except:
+            raise InvalidAccountData()
 
     def get_currency(self, username, egn, iban):
         user = self.get_user(username, egn)
