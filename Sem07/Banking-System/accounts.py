@@ -43,8 +43,8 @@ class Accounts:
         account = self.get_account(user, iban)
         if not account:
             raise AccountNotFound()
-        if type(amount) != int:
-            raise InvalidAmountType()
+        # if type(amount) != int:
+        #     raise InvalidAmountType()
         account["balance"] += amount
 
     def withdraw_from_account(self, username, egn, iban, amount):
@@ -56,6 +56,6 @@ class Accounts:
             raise AccountNotFound()
         if amount > account["balance"]:
             raise UnsufficientBalance()
-        if type(amount) != int:
-            raise InvalidAmountType()
+        # if type(amount) != int:
+        #     raise InvalidAmountType()
         account["balance"] -= amount
