@@ -1,6 +1,8 @@
-import errors
-from entities.hero import HeroEquipmentProgram
 import random
+
+import errors
+from entities.heroequipment import HeroEquipmentProgram
+
 
 def main():
     program = HeroEquipmentProgram()
@@ -35,10 +37,11 @@ def main():
         elif command == "2":
             hero_name = input("Enter hero name: ")
             item_name = input("Enter item name: ")
-            attack_dmg = random.randint(100,800)
+            attack_dmg = random.randint(20, 500)
+            attack_dmg = f"{attack_dmg} AD"
             try:
                 program.equip_hero(hero_name, item_name, attack_dmg)
-                print(f"{item_name} with AD: {attack_dmg} has been equipped to {hero_name}!")
+                print(f"{item_name} with: {attack_dmg} has been equipped to {hero_name}!")
             except errors.InvalidDataError as e:
                 print(e)
             except errors.InvalidUserData as e:
@@ -48,9 +51,12 @@ def main():
             hero_name = input("Enter hero name: ")
             item_name = input("Enter item name: ")
             item_type = input("Enter item type: ")
+            durability = random.randint(100, 800)
+            durability = f"{durability} DUR"
             try:
-                program.equip_additional_item(hero_name, item_name, item_type)
-                print(f"Addition item: {item_name} from type: {item_type} has been equipped to {hero_name}!")
+                program.equip_additional_item(hero_name, item_name, item_type, durability)
+                print(
+                    f"Addition item: {item_name} from type: {item_type} and {durability} has been equipped to {hero_name}!")
             except errors.InvalidDataError as e:
                 print(e)
             except errors.InvalidUserData as e:
