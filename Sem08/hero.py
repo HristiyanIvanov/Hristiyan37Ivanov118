@@ -10,10 +10,10 @@ class Hero:
         self.equipped_items = []
 
     def equip_item(self, item_name, attack_dmg):
-        self.equipped_items.append(item_name, attack_dmg)
+        self.equipped_items.append((item_name, attack_dmg))
 
-    def equip_additional_item(self, item_name, item_type):
-        self.equipped_items.append((item_name, item_type))
+    def equip_additional_item(self, item_name, item_type, durability):
+        self.equipped_items.append((item_name, item_type, durability))
 
     def view_equipment(self):
         print(f"{self.name}'s equipment:")
@@ -42,7 +42,7 @@ class HeroEquipmentProgram:
         if hero_name in self.heroes:
             raise errors.CharacterExists()
 
-        self.heroes[hero_name, egn, gender, game_class] = Hero(hero_name, egn, gender, game_class)
+        self.heroes[hero_name] = Hero(hero_name, egn, gender, game_class)
 
     def equip_hero(self, hero_name, item_name, attack_dmg):
         if hero_name not in self.heroes:
@@ -50,11 +50,11 @@ class HeroEquipmentProgram:
 
         self.heroes[hero_name].equip_item(item_name, attack_dmg)
 
-    def equip_additional_item(self, hero_name, item_name, item_type):
+    def equip_additional_item(self, hero_name, item_name, item_type, durability):
         if hero_name not in self.heroes:
             raise errors.InvalidDataError()
 
-        self.heroes[hero_name].equip_additional_item(item_name, item_type)
+        self.heroes[hero_name].equip_additional_item(item_name, item_type, durability)
 
     def view_hero_equipment(self, hero_name):
         if hero_name not in self.heroes:
