@@ -1,7 +1,7 @@
 import random
 
 import errors
-from entities.heroequipment import HeroEquipmentProgram
+from entities.hero import HeroEquipmentProgram
 
 
 def main():
