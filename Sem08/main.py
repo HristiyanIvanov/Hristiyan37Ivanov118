@@ -1,11 +1,11 @@
 import random
 
-import errors
-from entities.hero import HeroEquipmentProgram
+from entities.heroequipment import *
+from game.errors import *
 
 
 def main():
-    program = HeroEquipmentProgram()
+    program = HeroFunctionsProgram()
 
     while True:
         print("Enter a command:")
@@ -19,19 +19,20 @@ def main():
 
         if command == "1":
             hero_name = input("Enter hero name -> First and Last Name: ")
-            egn = input("Enter a EGN: ")
             gender = input("Enter Gender -> Male / Female: ")
             game_class = input("Enter Class -> Warrior, Mage, Priest or Rogue: ")
             try:
-                program.create_new_hero(hero_name, egn, gender, game_class)
-                print(f"{hero_name} with {egn} and {gender} from {game_class} has been created!")
-            except errors.InvalidDataError as e:
+                program.create_new_hero(hero_name, gender, game_class)
+                print(f"{hero_name} as {gender} -> {game_class} has been created!")
+            except InvalidUserData as e:
                 print(e)
-            except errors.CharacterExists as e:
+            except InvalidDataError as e:
                 print(e)
-            except errors.InvalidGender as e:
+            except CharacterExists as e:
                 print(e)
-            except errors.InvalidClass as e:
+            except InvalidGender as e:
+                print(e)
+            except InvalidClass as e:
                 print(e)
 
         elif command == "2":
@@ -42,9 +43,9 @@ def main():
             try:
                 program.equip_hero(hero_name, item_name, attack_dmg)
                 print(f"{item_name} with: {attack_dmg} has been equipped to {hero_name}!")
-            except errors.InvalidDataError as e:
+            except InvalidDataError as e:
                 print(e)
-            except errors.InvalidUserData as e:
+            except InvalidUserData as e:
                 print(e)
 
         elif command == "3":
@@ -57,18 +58,18 @@ def main():
                 program.equip_additional_item(hero_name, item_name, item_type, durability)
                 print(
                     f"Addition item: {item_name} from type: {item_type} and {durability} has been equipped to {hero_name}!")
-            except errors.InvalidDataError as e:
+            except InvalidDataError as e:
                 print(e)
-            except errors.InvalidUserData as e:
+            except InvalidUserData as e:
                 print(e)
 
         elif command == "4":
             hero_name = input("Enter hero name: ")
             try:
                 program.view_hero_equipment(hero_name)
-            except errors.InvalidDataError as e:
+            except InvalidDataError as e:
                 print(e)
-            except errors.InvalidUserData as e:
+            except InvalidUserData as e:
                 print(e)
 
         elif command == "5":
@@ -76,7 +77,7 @@ def main():
             break
 
         else:
-            raise errors.InvalidCommandError()
+            raise InvalidCommandError()
 
 
 if __name__ == "__main__":
