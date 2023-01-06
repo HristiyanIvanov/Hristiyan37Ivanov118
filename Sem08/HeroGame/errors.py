@@ -1,5 +1,5 @@
 class InvalidUserData(Exception):
-    def __init__(self, message="Hero Name or EGN is invalid. Please try again.", *args: object):
+    def __init__(self, message="Hero Name is invalid. Please try again.", *args: object):
         super().__init__(message, *args)
 
 
@@ -17,11 +17,12 @@ class InvalidCommandError(Exception):
     def __init__(self, message="Invalid command entered!", *args: object):
         super().__init__(message, *args)
 
+
 class InvalidGender(Exception):
     def __init__(self, message="The Gender of the Hero can be only Male or Female.", *args: object):
         super().__init__(message, *args)
 
 
 class InvalidClass(Exception):
-    def __init__(self, message="Hero's class can be from 1-5.", *args: object):
+    def __init__(self, message="Hero's class can be from Warrior, Mage, Priest or Rogue.", *args: object):
         super().__init__(message, *args)
